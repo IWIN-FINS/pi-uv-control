@@ -44,7 +44,7 @@ The simulation family preserves the DE101 deliberately mismatched Fossen paramet
 
 The ten-seed simulation tables cover Fossen, DKUC, the frozen residual and the multi-step online variant, with and without payload. The historical DE101 bundle also retains earlier methods for provenance.
 
-A complete frozen Unity Player, third-party engine assets and live ROS/MCU transport are external dependencies. Portable prediction, replay and numerical tests run from this repository. Historical experiment scripts retain original machine paths and require environment reconstruction.
+A complete frozen Unity Player, third-party engine assets and live ROS/MCU transport are external dependencies. Portable prediction, replay and numerical tests run from this repository. Historical experiment scripts use a JSON path configuration. See [simulation reproduction](simulation/REPRODUCE.md) for dependency checks and execution instructions.
 
 ## License
 

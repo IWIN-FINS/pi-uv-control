@@ -1,3 +1,4 @@
+from finshybrid.experiment_paths import config_path, load_record
 """Freeze the experimental design and collect thirty new simulation seeds."""
 from pathlib import Path
 import hashlib
@@ -8,11 +9,11 @@ import sys
 import time
 import msvcrt
 
-ROOT=Path(__file__).resolve().parent
-REPO=Path('D:/code/Underwater-Adaptive-Dynamics')
-TOOLS=Path('D:/code/FinsSim/tools')
-OLD=ROOT.parent/'de101-mainline-failure-inclusive-20261027'
-POOL=ROOT.parent/'de65-current-data-scaling-20261015'
+ROOT=config_path("training_run")
+REPO=config_path("repository")
+TOOLS=config_path("finssim_tools")
+OLD=config_path("de101")
+POOL=config_path("collection_pool")
 BUNDLE=REPO/'reproduction/de101'
 VAL=REPO/'data/validation.npz'
 TRUTH=OLD/'formal/still/train281/F/seed1101221/invariant-seed1101221/physical_profile_fixed.json'
@@ -21,7 +22,7 @@ CONDS=('still','steady','slow','fast','nonperiodic')
 POLICIES=('matched','inertia','damping','inertia_damping')
 def trainseeds(g):return [3117001+3*g+j for j in range(3)]
 def testseed(e,r):return 3117221+2*e+r
-def read(p):return json.loads(Path(p).read_text(encoding='utf-8-sig'))
+def read(p):return load_record(p)
 def sha(p):return hashlib.sha256(Path(p).read_bytes()).hexdigest()
 def write(p,x):
     p.parent.mkdir(exist_ok=True,parents=True)

@@ -1,18 +1,19 @@
+from finshybrid.experiment_paths import config_path, load_record
 import hashlib
 import json
 import os
 from pathlib import Path
 
-ROOT = Path(__file__).resolve().parent
-BASE = ROOT.parent / "de100-data-scaling-20261027"
-EMPTY = ROOT.parent / "de101-10datasets-400-20261107"
-LOADED = ROOT.parent / "de101-ballast300-10datasets-400-20261108"
-PILOT = ROOT.parent / "de101-ballast300-pilot-20261108"
-WORK = Path(r"C:/Users/admin/.codex/worktrees/multistep-bias-review/Underwater-Adaptive-Dynamics")
-PAIRS = ROOT.parent.parent / "diagnostics/de101-multistep-bias-paired-20261108/paired_conditions.csv"
+ROOT = config_path("multistep_run")
+BASE = config_path("de100")
+EMPTY = config_path("training_run")
+LOADED = config_path("loaded_run")
+PILOT = config_path("pilot_run")
+WORK = config_path("repository")
+PAIRS = config_path("paired_conditions")
 
 def read(path):
-    return Path(path).read_json() if hasattr(path, "read_json") else json.loads(Path(path).read_text(encoding="utf-8-sig"))
+    return load_record(path)
 
 def save(path, value):
     path = Path(path)

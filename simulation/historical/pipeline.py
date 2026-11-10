@@ -1,3 +1,4 @@
+from finshybrid.experiment_paths import config_path, load_record
 """Sequential data conversion, training, held-out closed loops, prediction and reporting."""
 import os
 for key in ('OMP_NUM_THREADS','MKL_NUM_THREADS','OPENBLAS_NUM_THREADS'):os.environ[key]='1'
@@ -9,8 +10,8 @@ import subprocess
 import traceback
 from pathlib import Path
 from collect import ROOT,REPO,TOOLS,BUNDLE,OLD,VAL,TRUTH,ARMS,CONDS,read,once,write,sha,state,lock,testseed
-LEGACY=REPO/'experiments/mainline_closed_loop_de101'
-COMP=REPO/'experiments/mainline_comparison'
+LEGACY=config_path("legacy_source")
+COMP=config_path("comparison_source")
 sys.path[:0]=[str(LEGACY),str(COMP),str(REPO/'src'),str(TOOLS)]
 import common
 import native
@@ -162,7 +163,7 @@ def main():
     assert int(active.strip())==0,'Another Unity player is running'
     records=formal(plan)
     state('reporting',recorded=400)
-    subprocess.run(['D:/ProgramData/anaconda3/python.exe',str(ROOT/'report400.py')],check=True)
+    subprocess.run([str(config_path("python")),str(config_path('training_source')/'report400.py')],check=True)
     verify(ROOT/'source_freeze.json');state('complete',recorded=400,completed=sum(records),failed=400-sum(records))
 if __name__=='__main__':
     try:main()

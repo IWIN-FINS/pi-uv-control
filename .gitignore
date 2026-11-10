@@ -12,3 +12,6 @@ runs/
 *.so
 *.dll
 *.obj
+
+simulation/config.local.json
+simulation/config.*.local.json

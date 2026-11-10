@@ -1,3 +1,4 @@
+from finshybrid.experiment_paths import config_path, load_record
 """Freeze a new failure-inclusive study; historical studies are read-only."""
 from common import *
 from native import export
@@ -9,7 +10,7 @@ def main():
  # Audit existing artifact names before materializing the new seed's outputs.
  if not (ROOT/'seed_audit.json').exists():
   hits=[]
-  for base in ('D:/FinsSim-deps/Unity','D:/FinsSim-deps/diagnostics'):
+  for base in (str(config_path("unity_artifacts")),str(config_path("diagnostics"))):
    r=subprocess.run(['rg','--files',base,'-g','*1101221*'],capture_output=True,text=True)
    assert r.returncode in (0,1)
    hits.extend(x for x in r.stdout.splitlines() if 'de101-mainline-failure-inclusive' not in x)

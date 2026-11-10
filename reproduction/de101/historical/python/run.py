@@ -1,3 +1,4 @@
+from finshybrid.experiment_paths import config_path, load_record
 """Serial 75-attempt runner. Expected model failures continue; engineering errors stop."""
 from common import *
 import subprocess,time,traceback,msvcrt,math
@@ -9,7 +10,7 @@ def verify():
   for p,h in read(ROOT/name).items():assert sha(p)==h,p
 
 def freeze():
- files=list(HERE.glob('*.py'))+list(TOOLS.glob('*.py'))+list((REPO/'experiments/mainline_comparison').glob('*.py'))+list((REPO/'src/finshybrid').rglob('*.py'))
+ files=list(HERE.glob('*.py'))+list(TOOLS.glob('*.py'))+list((config_path("comparison_source")).glob('*.py'))+list((REPO/'src/finshybrid').rglob('*.py'))
  files+=list((PARENT/'unity_source/Assets/Scripts').glob('*.cs'))+[ROOT/'player/FinsROVHybridBasis_Data/Managed/Assembly-CSharp.dll',ROOT/'acceptance.json']
  once(ROOT/'execution_source_freeze.json',{str(p):sha(p) for p in files})
 
@@ -76,7 +77,7 @@ def main():
   print(f"ATTEMPT {index+1}/75 {job['id']} {r['outcome']} audit={r['audit_status']}",flush=True)
  verify();status('reporting',attempted=75,total=75)
  env=dict(os.environ);env.pop('PYTHONPATH',None)
- subprocess.run(['D:/ProgramData/anaconda3/python.exe',str(HERE/'report.py')],env=env,check=True)
+ subprocess.run([str(config_path("python")),str(HERE/'report.py')],env=env,check=True)
  verify();dump(ROOT/'computed.json',dict(status='computed_pending_independent_visual_review',attempted=75,report=str(ROOT/'report/report.md')))
  status('computed_pending_independent_visual_review',attempted=75,total=75)
 if __name__=='__main__':

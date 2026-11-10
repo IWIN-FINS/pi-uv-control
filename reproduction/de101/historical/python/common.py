@@ -1,21 +1,22 @@
+from finshybrid.experiment_paths import config_path, load_record
 """DE99 five-arm final-mainline closed-loop protocol; isolated artifacts."""
 import sys,json,hashlib,os,datetime
 from pathlib import Path
 import numpy as np
 HERE=Path(__file__).resolve().parent
-REPO=Path('D:/code/Underwater-Adaptive-Dynamics')
-TOOLS=Path('D:/code/FinsSim/tools')
-sys.path.insert(0,str(TOOLS));sys.path.insert(0,str(REPO/'experiments/mainline_comparison'));sys.path.insert(0,str(REPO/'src'))
-PARENT=Path('D:/FinsSim-deps/Unity/de100-data-scaling-20261027')
-ROOT=Path('D:/FinsSim-deps/Unity/de101-mainline-failure-inclusive-20261027')
+REPO=config_path("repository")
+TOOLS=config_path("finssim_tools")
+sys.path.insert(0,str(TOOLS));sys.path.insert(0,str(config_path("comparison_source")));sys.path.insert(0,str(REPO/'src'))
+PARENT=config_path("de100")
+ROOT=config_path("de101")
 STUDY=ROOT
-OFFLINE=Path('D:/FinsSim-deps/diagnostics/mainline-five-arm-20261027/offline')
-SOURCE=Path('D:/FinsSim-deps/Unity/de92-weight-window-factorial-20261023')
+OFFLINE=config_path("offline")
+SOURCE=config_path("de92")
 ARMS=('F','Knu','Kx','H','H_bias');INITS=(281,282,283)
 CONDITIONS=('still','steady','slow','fast','nonperiodic')
 PRE=1100000;SEEDS=(1101221,)
 CONFIG={a:dict(mode='bias' if a=='H_bias' else 'fixed',cost='legacy',window=40,forget=.98) for a in ARMS}
-def read(p):return json.loads(Path(p).read_text(encoding='utf-8-sig'))
+def read(p):return load_record(p)
 def sha(p):return hashlib.sha256(Path(p).read_bytes()).hexdigest()
 def dump(p,v):
  p=Path(p);p.parent.mkdir(parents=True,exist_ok=True);tmp=p.with_suffix(p.suffix+'.tmp');tmp.write_text(json.dumps(v,ensure_ascii=False,indent=2,allow_nan=False),encoding='utf-8');tmp.replace(p)

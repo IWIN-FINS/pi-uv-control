@@ -1,3 +1,4 @@
+from finshybrid.experiment_paths import config_path, load_record, relocate_text
 import csv
 import shutil
 import subprocess
@@ -18,11 +19,11 @@ def build():
     end = s.index('        self.library =', begin)
     s = s[:begin] + '        library_path = Path(cache_dir) / "multistep.dll"\n' + s[end:]
     m.write_text(s, encoding="utf-8")
-    compiler = next(iter(sorted(Path("C:/Program Files (x86)/Microsoft Visual Studio").glob("*/*/VC/Auxiliary/Build/vcvars64.bat"),reverse=True)))
+    compiler = config_path("vcvars64")
     script = ROOT / "compile_kernel.cmd"
-    script.write_text(f'@echo off\ncall "{compiler}" >nul || exit /b 1\ncl /nologo /O2 /fp:precise /EHsc /std:c++17 /LD "{src / "native/multistep_bias_kernel.cpp"}" /link /EXPORT:multistep_bias_rollout /OUT:multistep.dll\n',encoding="ascii")
+    script.write_text(f'@echo off\ncall "{compiler}" >nul || exit /b 1\ncl /nologo /O2 /fp:precise /EHsc /std:c++17 /LD "{src / "native/multistep_bias_kernel.cpp"}" /link /EXPORT:multistep_bias_rollout /OUT:multistep.dll\n',encoding="utf-8")
     subprocess.run(["cmd", "/d", "/c", str(script)], cwd=ROOT, check=True)
-    editor = Path("D:/Unity/Hub/Editor/6000.3.20f1/Editor/Data")
+    editor = config_path("unity_editor_data")
     for load, original in [("empty", BASE), ("ballast300", PILOT)]:
         dest = ROOT / load
         shutil.copytree(original / "player", dest / "player", dirs_exist_ok=True)
@@ -34,7 +35,7 @@ def build():
                        'if(De83Online=="de92")av=MultistepUpdate(t,de83Previous,u,current,out vb,out va);')
         (dest / smoke).write_text(s, encoding="utf-8")
         dll = dest / "player/FinsROVHybridBasis_Data/Managed/Assembly-CSharp.dll"
-        lines = (BASE / "compile/Assembly-CSharp.player.rsp").read_text(encoding="utf-8-sig").splitlines()
+        lines = relocate_text((BASE / "compile/Assembly-CSharp.player.rsp").read_text(encoding="utf-8-sig")).splitlines()
         lines[0] = f'-out:"{dll}"'
         lines[lines.index(f'"Assets/Scripts/{smoke}"')] = f'"{dest/smoke}"'
         lines.append(f'"{ROOT/"SimBias.cs"}"')

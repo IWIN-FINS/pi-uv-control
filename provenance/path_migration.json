@@ -1,0 +1,35 @@
+{
+  "change": "Configurable filesystem roots and subprocess interpreter. JSON records are remapped in memory. Original model/gradient fixtures retain their bytes.",
+  "modified_historical_bundle_files": [
+    {
+      "path": "reproduction/de101/historical/python/common.py",
+      "original_sha256": "ab772c61b0bd9337bc427e97ae24716225017380da88a7d3f78fdec0a90e1dd0",
+      "relocated_sha256": "46be837a17de7fa8fc89859a41edbe16da1d2389d6ee8ae35c34ff4ee7089f19"
+    },
+    {
+      "path": "reproduction/de101/historical/python/final_review.py",
+      "original_sha256": "e3f239636b299243767761e5bb50beeaa94151394d8bcfadb99e52d3f27d8457",
+      "relocated_sha256": "5472bb6f857167c407a566d4e093bed281e6cd7e6e43a7b8d05ab786240f49f1"
+    },
+    {
+      "path": "reproduction/de101/historical/python/prepare.py",
+      "original_sha256": "8868e3354a241bc3e3d927b02c25310e7db6187a8471a54bb4b8e31912ad3116",
+      "relocated_sha256": "514b2a17c2845baa29681e8abea991bed5f6bd379e9fe708f2a7e5a9cf2888b3"
+    },
+    {
+      "path": "reproduction/de101/historical/python/report.py",
+      "original_sha256": "7b2ddb2e0993a41c31a2c3c2b1b81c9f16e88b1f63a55221ca858d2f026b29df",
+      "relocated_sha256": "205ed24f4faef36358f27155c5a18b60143a0483c3ef7471b0fd13960835e250"
+    },
+    {
+      "path": "reproduction/de101/historical/python/run.py",
+      "original_sha256": "867e1e51925420a0cbf28978e33b6523812a7c142e288fee4211f8cf043ead3b",
+      "relocated_sha256": "2b8ed8858c0f2546ca7bead94af780dede0b341d373ce5b1f54f97807c0396d9"
+    },
+    {
+      "path": "reproduction/de101/historical/python/validation.py",
+      "original_sha256": "e74ba6b34fcb3edb762a28ccfae427a246a25125eaf0bbd18ee8c4617877c5fa",
+      "relocated_sha256": "4b5451d884217b16013d5c204af7bda275b41234df3038c5aab5c2b9c5a70963"
+    }
+  ]
+}

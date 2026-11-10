@@ -5,3 +5,5 @@ The portable code derives from IWIN-FINS/Underwater-Adaptive-Dynamics feature/mu
 This curated distribution has English entry-point documentation, separate simulation/hardware families and file hashes. Original objective fixtures and their manifests are retained. Historical source paths identify the originating environment.
 
 The ten-seed aggregate results combine Windows and Ubuntu runs. Each group, payload, current and seed pairs reference and disturbance conditions across methods.
+
+Historical coordinators now use PI_UV_CONFIG. path_migration.json records source hash changes. de101_publication_before_path_migration.json preserves the previous source manifest; the active bundle manifest validates the relocated source while retaining numerical fixtures.

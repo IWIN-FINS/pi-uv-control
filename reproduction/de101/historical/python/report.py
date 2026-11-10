@@ -1,3 +1,4 @@
+from finshybrid.experiment_paths import config_path, load_record
 """All-attempt descriptive report, pairing, scalar RMSE and figures; no simulation."""
 import json,csv,hashlib,math
 from pathlib import Path
@@ -6,10 +7,10 @@ import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 from matplotlib.lines import Line2D
-ROOT=Path('D:/FinsSim-deps/Unity/de101-mainline-failure-inclusive-20261027')
+ROOT=config_path("de101")
 ARMS=('F','Knu','Kx','H','H_bias');CONDS=('still','steady','slow','fast','nonperiodic')
 COLORS=dict(zip(ARMS,('tab:blue','tab:orange','tab:green','tab:red','tab:purple')))
-def read(p):return json.loads(p.read_text(encoding='utf-8-sig'))
+def read(p):return load_record(p)
 def sha(p):return hashlib.sha256(p.read_bytes()).hexdigest()
 def dump(p,v):p.write_text(json.dumps(v,ensure_ascii=False,indent=2,allow_nan=False),encoding='utf-8')
 def rows(p):

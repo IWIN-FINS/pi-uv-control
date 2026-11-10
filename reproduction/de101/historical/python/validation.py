@@ -1,3 +1,4 @@
+from finshybrid.experiment_paths import config_path, load_record
 """Independent replay using unchanged tolerances and the reused repaired binary."""
 from common import *
 import types
@@ -24,7 +25,7 @@ def acceptance():
  observation_module();ns=namespace();records=[];nonzero=0
  import de84_metrics as m
  m.ROOT=ROOT;m.source_contract()
- engineering=Path('D:/FinsSim-deps/diagnostics/de100-data-scaling-20261027/engineering/geometry_acceptance.json')
+ engineering=config_path("geometry_acceptance")
  assert read(engineering)['status']=='passed'
  for init in INITS:
   for arm in ARMS:
