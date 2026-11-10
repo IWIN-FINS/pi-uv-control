@@ -1,0 +1,175 @@
+{
+  "records": [
+    {
+      "seed": 3117007,
+      "policy": "matched",
+      "digest": "110934a260fb0a046ba704061e4a2fb9eaa78f30bb984451f01c55e1bf4f09c5",
+      "source": {
+        "body_input_steps.csv": "ae410bb8245492c114f5454483abcf3a7c65f573f4349792fe094506cad82df9",
+        "completed.json": "09937f8ebb1ed8d380f7d22ea04af21612219cadfabc3bcc8f213976bc2d8b17",
+        "current_model_config.json": "db113328265066040f7a21cb07c68ff63a56f31af4a8778a0962e3d5903b48f5",
+        "current_velocity_trace.csv": "4cf0f7abcacfed29ec581945694f69cf3b9b612cf14876f745697f60a87f9f4d",
+        "model_parameters_baseline_end.json": "d5d57a68f1a30d084afa493b9c47403a1e133783246d9107b4a4a96936280cbe",
+        "model_parameters_baseline_start.json": "d5d57a68f1a30d084afa493b9c47403a1e133783246d9107b4a4a96936280cbe",
+        "motor_actions.csv": "ef4640939b3e610e2d54a5e0212c67298071c18eb97c93896e2879c68dcb67a2"
+      }
+    },
+    {
+      "seed": 3117007,
+      "policy": "inertia",
+      "digest": "8d54f9d459a855ec416f8f4601910668ccc99411827d4db96e76121be240ab5b",
+      "source": {
+        "body_input_steps.csv": "a9edbfbf3d1b9a5352456d26db7e32c363cf30655dae0389d8b6fbcdbe5a0f18",
+        "completed.json": "09937f8ebb1ed8d380f7d22ea04af21612219cadfabc3bcc8f213976bc2d8b17",
+        "current_model_config.json": "db113328265066040f7a21cb07c68ff63a56f31af4a8778a0962e3d5903b48f5",
+        "current_velocity_trace.csv": "4cf0f7abcacfed29ec581945694f69cf3b9b612cf14876f745697f60a87f9f4d",
+        "model_parameters_baseline_end.json": "a2811c82b37ec16c5c6403c81f7f12f0b60aca586f927df97e95a415a5aeda8f",
+        "model_parameters_baseline_start.json": "a2811c82b37ec16c5c6403c81f7f12f0b60aca586f927df97e95a415a5aeda8f",
+        "motor_actions.csv": "2cdefdd9772abf1b38cbe15c07fd85010a5edea0af0b70ba16322703524dfb81"
+      }
+    },
+    {
+      "seed": 3117007,
+      "policy": "damping",
+      "digest": "04faa1250b0bbb67472ad592e62a6349cda428add60954f7473c35366b7be61d",
+      "source": {
+        "body_input_steps.csv": "bd6b8c8b04edc94ccdf2660ff157033e181e558128c9dcb6dce25e233e0fb636",
+        "completed.json": "09937f8ebb1ed8d380f7d22ea04af21612219cadfabc3bcc8f213976bc2d8b17",
+        "current_model_config.json": "db113328265066040f7a21cb07c68ff63a56f31af4a8778a0962e3d5903b48f5",
+        "current_velocity_trace.csv": "4cf0f7abcacfed29ec581945694f69cf3b9b612cf14876f745697f60a87f9f4d",
+        "model_parameters_baseline_end.json": "f7b42734dd0ef8b66931135c557aaaa624de4be7dcd0eedb55f0d6b0ef1a98a1",
+        "model_parameters_baseline_start.json": "f7b42734dd0ef8b66931135c557aaaa624de4be7dcd0eedb55f0d6b0ef1a98a1",
+        "motor_actions.csv": "f69bf8c30de43561a9c874ba76cb4846ece8e491bb21d159f733130e628b600d"
+      }
+    },
+    {
+      "seed": 3117007,
+      "policy": "inertia_damping",
+      "digest": "ede5fd51a9df4f6c91a43663e855cdcfb41e0012db7eb52c44d39a990393869b",
+      "source": {
+        "body_input_steps.csv": "a574e365a6c05f5f04cab92e51bea837af92ea97a3f90428d0761dc220d16dcb",
+        "completed.json": "09937f8ebb1ed8d380f7d22ea04af21612219cadfabc3bcc8f213976bc2d8b17",
+        "current_model_config.json": "db113328265066040f7a21cb07c68ff63a56f31af4a8778a0962e3d5903b48f5",
+        "current_velocity_trace.csv": "4cf0f7abcacfed29ec581945694f69cf3b9b612cf14876f745697f60a87f9f4d",
+        "model_parameters_baseline_end.json": "5300f2e0f32c06e707fa38e4d74bbeb59ce98e877eeaacb136897777164a1358",
+        "model_parameters_baseline_start.json": "5300f2e0f32c06e707fa38e4d74bbeb59ce98e877eeaacb136897777164a1358",
+        "motor_actions.csv": "0d43b863bbf65f3d57b5de0234571fb77b90986807cca3a378d312e9fc45cee7"
+      }
+    },
+    {
+      "seed": 3117008,
+      "policy": "matched",
+      "digest": "6ed0483f9bc683dbc1d7601fd5c214625235e6553a8b3c1b4ac7ef53fff665cf",
+      "source": {
+        "body_input_steps.csv": "e6a7425873ee95b88d1a346ce79b69f0c7771169907412623c738348420a4432",
+        "completed.json": "09937f8ebb1ed8d380f7d22ea04af21612219cadfabc3bcc8f213976bc2d8b17",
+        "current_model_config.json": "db113328265066040f7a21cb07c68ff63a56f31af4a8778a0962e3d5903b48f5",
+        "current_velocity_trace.csv": "459f7380521d14e090a61758d9674ac6109a8cb6877816b20a718436578da5d5",
+        "model_parameters_baseline_end.json": "d5d57a68f1a30d084afa493b9c47403a1e133783246d9107b4a4a96936280cbe",
+        "model_parameters_baseline_start.json": "d5d57a68f1a30d084afa493b9c47403a1e133783246d9107b4a4a96936280cbe",
+        "motor_actions.csv": "737c025be0272f4aed83e512a29b4560f1756334798d632c81a5db24a6dcf41f"
+      }
+    },
+    {
+      "seed": 3117008,
+      "policy": "inertia",
+      "digest": "32eed3c1d1704d5c3894e6d075d16f081e02af6f47c9ba6dff12ca7a7070fc55",
+      "source": {
+        "body_input_steps.csv": "b14f8eb724ebe171f600295df4f9ff683e3c08ea440535a0bf594c3fc66a9d42",
+        "completed.json": "09937f8ebb1ed8d380f7d22ea04af21612219cadfabc3bcc8f213976bc2d8b17",
+        "current_model_config.json": "db113328265066040f7a21cb07c68ff63a56f31af4a8778a0962e3d5903b48f5",
+        "current_velocity_trace.csv": "459f7380521d14e090a61758d9674ac6109a8cb6877816b20a718436578da5d5",
+        "model_parameters_baseline_end.json": "a2811c82b37ec16c5c6403c81f7f12f0b60aca586f927df97e95a415a5aeda8f",
+        "model_parameters_baseline_start.json": "a2811c82b37ec16c5c6403c81f7f12f0b60aca586f927df97e95a415a5aeda8f",
+        "motor_actions.csv": "2e8138a7dd643e1bd325126a082bcc6c966feb0193f706cc323d22efcb18b955"
+      }
+    },
+    {
+      "seed": 3117008,
+      "policy": "damping",
+      "digest": "aa564ef6c4685d5bc1a3166006fd2815b5b4cf72ff239ae4f4913c32302e63e1",
+      "source": {
+        "body_input_steps.csv": "6c71ba60bf9121b7cc3a692e567637b77412498f3ae02ba216d2398891d90941",
+        "completed.json": "09937f8ebb1ed8d380f7d22ea04af21612219cadfabc3bcc8f213976bc2d8b17",
+        "current_model_config.json": "db113328265066040f7a21cb07c68ff63a56f31af4a8778a0962e3d5903b48f5",
+        "current_velocity_trace.csv": "459f7380521d14e090a61758d9674ac6109a8cb6877816b20a718436578da5d5",
+        "model_parameters_baseline_end.json": "f7b42734dd0ef8b66931135c557aaaa624de4be7dcd0eedb55f0d6b0ef1a98a1",
+        "model_parameters_baseline_start.json": "f7b42734dd0ef8b66931135c557aaaa624de4be7dcd0eedb55f0d6b0ef1a98a1",
+        "motor_actions.csv": "d905018e2133b39c2328bf153d4333c082b119ebaffc4151f2211efa36ae54a6"
+      }
+    },
+    {
+      "seed": 3117008,
+      "policy": "inertia_damping",
+      "digest": "6ad98107dba2b0652794aa4b8cbf63b49d24662db0c4a2fff6f48297fe7fd112",
+      "source": {
+        "body_input_steps.csv": "99bb6f3e6952534a1f7177c8f42200893b604c301992d467552be720fdbd0ad6",
+        "completed.json": "09937f8ebb1ed8d380f7d22ea04af21612219cadfabc3bcc8f213976bc2d8b17",
+        "current_model_config.json": "db113328265066040f7a21cb07c68ff63a56f31af4a8778a0962e3d5903b48f5",
+        "current_velocity_trace.csv": "459f7380521d14e090a61758d9674ac6109a8cb6877816b20a718436578da5d5",
+        "model_parameters_baseline_end.json": "5300f2e0f32c06e707fa38e4d74bbeb59ce98e877eeaacb136897777164a1358",
+        "model_parameters_baseline_start.json": "5300f2e0f32c06e707fa38e4d74bbeb59ce98e877eeaacb136897777164a1358",
+        "motor_actions.csv": "3e87ff70ecb078ea58935f80a82dbba245ea5616bfd57e82c71c253bdeb0c7c7"
+      }
+    },
+    {
+      "seed": 3117009,
+      "policy": "matched",
+      "digest": "b87d463f154b5c59eaf6e6d4f2c8d188f7d954459b36af76f2d8a7d1e1960bdd",
+      "source": {
+        "body_input_steps.csv": "359464513300172d4ac98fb96ce95e998e470390d92e0d6e07e6fb1b1c6a4210",
+        "completed.json": "09937f8ebb1ed8d380f7d22ea04af21612219cadfabc3bcc8f213976bc2d8b17",
+        "current_model_config.json": "db113328265066040f7a21cb07c68ff63a56f31af4a8778a0962e3d5903b48f5",
+        "current_velocity_trace.csv": "628cc3caacb688e28ec574dd44929f6e8f519811797fe0b5cebbc517ad7b1af4",
+        "model_parameters_baseline_end.json": "d5d57a68f1a30d084afa493b9c47403a1e133783246d9107b4a4a96936280cbe",
+        "model_parameters_baseline_start.json": "d5d57a68f1a30d084afa493b9c47403a1e133783246d9107b4a4a96936280cbe",
+        "motor_actions.csv": "6aec6a4b28dc7e6c38eb7eb56d40b789e0a763afed6a603ca9e2e53b127764cb"
+      }
+    },
+    {
+      "seed": 3117009,
+      "policy": "inertia",
+      "digest": "b15ec546ec2fe189c6ca0927b3cc6a9c68c1989e25eeaf75993e0d5fcc228988",
+      "source": {
+        "body_input_steps.csv": "b1860647a51b56f9ad1bdb1ea49a6f366449c7157c35f77b825565081d364b64",
+        "completed.json": "09937f8ebb1ed8d380f7d22ea04af21612219cadfabc3bcc8f213976bc2d8b17",
+        "current_model_config.json": "db113328265066040f7a21cb07c68ff63a56f31af4a8778a0962e3d5903b48f5",
+        "current_velocity_trace.csv": "628cc3caacb688e28ec574dd44929f6e8f519811797fe0b5cebbc517ad7b1af4",
+        "model_parameters_baseline_end.json": "a2811c82b37ec16c5c6403c81f7f12f0b60aca586f927df97e95a415a5aeda8f",
+        "model_parameters_baseline_start.json": "a2811c82b37ec16c5c6403c81f7f12f0b60aca586f927df97e95a415a5aeda8f",
+        "motor_actions.csv": "1ef94abbfdbe11fd07dbb7205098d6d636f7032bb884f9c9fc8bb8735ac5c25a"
+      }
+    },
+    {
+      "seed": 3117009,
+      "policy": "damping",
+      "digest": "5666710126117e90051de824e1fda11dbd359707a05ce75e9980934a88519b96",
+      "source": {
+        "body_input_steps.csv": "3b46c4176bae9f89b0f79793af2e0800c5f3a8ee8153f0b67325af2766b098fe",
+        "completed.json": "09937f8ebb1ed8d380f7d22ea04af21612219cadfabc3bcc8f213976bc2d8b17",
+        "current_model_config.json": "db113328265066040f7a21cb07c68ff63a56f31af4a8778a0962e3d5903b48f5",
+        "current_velocity_trace.csv": "628cc3caacb688e28ec574dd44929f6e8f519811797fe0b5cebbc517ad7b1af4",
+        "model_parameters_baseline_end.json": "f7b42734dd0ef8b66931135c557aaaa624de4be7dcd0eedb55f0d6b0ef1a98a1",
+        "model_parameters_baseline_start.json": "f7b42734dd0ef8b66931135c557aaaa624de4be7dcd0eedb55f0d6b0ef1a98a1",
+        "motor_actions.csv": "7dc74404370f7511ad980de0f747b4c966424e6cd8770e9c8c4d24b0023b251e"
+      }
+    },
+    {
+      "seed": 3117009,
+      "policy": "inertia_damping",
+      "digest": "36f7953c2e5bad3b76dc742c0224876d7d99e54eaeefc82004698e4baaa7e02b",
+      "source": {
+        "body_input_steps.csv": "6db538e5dca38ed8b5974a090c95d480dd3609e291eb261585d00c7bf5bc8c65",
+        "completed.json": "09937f8ebb1ed8d380f7d22ea04af21612219cadfabc3bcc8f213976bc2d8b17",
+        "current_model_config.json": "db113328265066040f7a21cb07c68ff63a56f31af4a8778a0962e3d5903b48f5",
+        "current_velocity_trace.csv": "628cc3caacb688e28ec574dd44929f6e8f519811797fe0b5cebbc517ad7b1af4",
+        "model_parameters_baseline_end.json": "5300f2e0f32c06e707fa38e4d74bbeb59ce98e877eeaacb136897777164a1358",
+        "model_parameters_baseline_start.json": "5300f2e0f32c06e707fa38e4d74bbeb59ce98e877eeaacb136897777164a1358",
+        "motor_actions.csv": "b11e19072b69fe935a1c08efe2777a4fc5a30fb007bd842713f4d1c07611f699"
+      }
+    }
+  ],
+  "sha256": "5e53284b56ed52075a19391f75fce52e5b4f2e6f5d29d09d36219427ac981426",
+  "transitions": 3060,
+  "windows8": 2976
+}

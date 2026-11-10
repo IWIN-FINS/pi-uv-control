@@ -1,0 +1,17 @@
+{
+  "checks": {
+    "pytest": {
+      "passed": 23,
+      "skipped": 6,
+      "failed": 0,
+      "skipped_reason": "Optional Torch and native backend dependencies are absent in this environment."
+    },
+    "historical_de101_models": 15,
+    "native_objective_fixtures": 18,
+    "ten_group_datasets": 10,
+    "ten_group_model_exports": 30,
+    "hardware_replay_intervals": 30,
+    "hardware_accepted_updates": 5
+  },
+  "scope": "Offline numerical validation; no new simulation or live vehicle trial."
+}

@@ -1,0 +1,56 @@
+public sealed partial class FinsRovHybridBasisSmoke {
+ double[] de92C=new double[60],de92Weights;int de92Tick;
+ readonly System.Collections.Generic.List<double[]> de92Z=new System.Collections.Generic.List<double[]>(),de92Y=new System.Collections.Generic.List<double[]>();
+ string De92Mode=>System.Environment.GetEnvironmentVariable("FINSSIM_DE92_MODE")??"fixed";
+ void De92Reset(){System.Array.Clear(de92C,0,60);de92Weights=null;de92Tick=0;de92Z.Clear();de92Y.Clear();}
+ double De92Weight(int index){
+  if(de92Weights==null){de92Weights=new double[8];string mode=System.Environment.GetEnvironmentVariable("FINSSIM_DE92_COST")??"legacy";double sum=0;
+   for(int j=0;j<8;j++){double x=mode=="legacy"?(j==7?3d:1d):mode=="flat"?1d:mode=="exp"?System.Math.Pow(.25,j/7d):mode=="linear"?1d-.75*j/7d:double.NaN;de92Weights[j]=x;sum+=x;}
+   if(double.IsNaN(sum))throw new System.Exception("DE92 cost mode");if(mode!="legacy")for(int j=0;j<8;j++)de92Weights[j]*=10d/sum;
+  }return de92Weights[index];
+ }
+ static double[,] De92Solve(double[,] a,double[,] b){
+  int d=a.GetLength(0);var m=(double[,])a.Clone();var x=(double[,])b.Clone();
+  for(int k=0;k<d;k++){int p=k;for(int i=k+1;i<d;i++)if(System.Math.Abs(m[i,k])>System.Math.Abs(m[p,k]))p=i;
+   if(System.Math.Abs(m[p,k])<1e-12)throw new System.Exception("DE92 singular ridge");
+   for(int j=0;j<d;j++){double v=m[k,j];m[k,j]=m[p,j];m[p,j]=v;}for(int j=0;j<6;j++){double v=x[k,j];x[k,j]=x[p,j];x[p,j]=v;}
+   double divisor=m[k,k];for(int j=k;j<d;j++)m[k,j]/=divisor;for(int j=0;j<6;j++)x[k,j]/=divisor;
+   for(int i=0;i<d;i++)if(i!=k){double f=m[i,k];for(int j=k;j<d;j++)m[i,j]-=f*m[k,j];for(int j=0;j<6;j++)x[i,j]-=f*x[k,j];}
+  }return x;
+ }
+ double De92Fit(double[,] parameters,double[] weights,bool joint){
+  double value=0;for(int n=0;n<de92Y.Count;n++)for(int i=0;i<6;i++){double e=de92Y[n][i]-parameters[i,0];if(joint)for(int j=0;j<10;j++)e-=parameters[i,1+j]*de92Z[n][j];value+=weights[n]*e*e;}return value;
+ }
+ [System.Serializable] public class De92Record {public double t,before,after,weightSum;public int tick,samples,window;public double forget;public bool accepted;public double[] matrix,bias,center,features,innovation;}
+ bool De92Update(float t,double[] y,double[] previous,out double before,out double after){
+  bool joint=De92Mode=="joint";int d=joint?11:1;
+  int window=int.Parse(System.Environment.GetEnvironmentVariable("FINSSIM_DE92_WINDOW"));double forget=double.Parse(System.Environment.GetEnvironmentVariable("FINSSIM_DE92_FORGET"),System.Globalization.CultureInfo.InvariantCulture);
+  var z=new double[10];System.Array.Copy(previous,13,z,0,10);de92Z.Add(z);de92Y.Add((double[])y.Clone());de92Tick++;
+  if(de92Z.Count>window){de92Z.RemoveAt(0);de92Y.RemoveAt(0);}int count=de92Y.Count;
+  double reference=0,sum=0;for(int j=0;j<System.Math.Min(de92Tick,40);j++)reference+=System.Math.Pow(.98,j);
+  var weights=new double[count];for(int n=0;n<count;n++){weights[n]=System.Math.Pow(forget,count-1-n);sum+=weights[n];}
+  for(int n=0;n<count;n++)weights[n]*=reference/sum;
+  var mu=new double[10];if(joint)for(int n=0;n<count;n++)for(int j=0;j<10;j++)mu[j]+=weights[n]*de92Z[n][j]/reference;
+  var old=new double[6,d];for(int i=0;i<6;i++){old[i,0]=hybrid.De83VB[i];if(joint)for(int j=0;j<10;j++)old[i,1+j]=de92C[i*10+j];}
+  before=De92Fit(old,weights,joint);after=before;bool accepted=false;
+  if(de92Tick>=20){
+   var gram=new double[d,d];var rhs=new double[d,6];for(int j=0;j<d;j++){gram[j,j]=j==0?1.5:4.5;for(int i=0;i<6;i++){rhs[j,i]=.5*old[i,j];if(joint && j==0)for(int l=0;l<10;l++)rhs[j,i]+=.5*de92C[i*10+l]*mu[l];}}
+   for(int n=0;n<count;n++){var x=new double[d];x[0]=1;if(joint)for(int j=0;j<10;j++)x[j+1]=de92Z[n][j]-mu[j];
+    for(int j=0;j<d;j++){for(int l=0;l<d;l++)gram[j,l]+=weights[n]*x[j]*x[l];for(int i=0;i<6;i++)rhs[j,i]+=weights[n]*x[j]*de92Y[n][i];}}
+   var sol=De92Solve(gram,rhs);var target=new double[6,d];double norm=0;
+   for(int i=0;i<6;i++){for(int j=0;j<d;j++)target[i,j]=sol[j,i];if(joint)for(int j=0;j<10;j++)target[i,0]-=target[i,j+1]*mu[j];}
+   if(!joint)for(int i=0;i<6;i++)target[i,0]=old[i,0]+.2*(target[i,0]-old[i,0]);
+   for(int i=0;i<6;i++)for(int j=0;j<d;j++)norm+=target[i,j]*target[i,j];double f=System.Math.Min(1,.25/System.Math.Max(System.Math.Sqrt(norm),1e-30));
+   var delta=new double[6,d];norm=0;for(int i=0;i<6;i++)for(int j=0;j<d;j++){delta[i,j]=(joint?.2:1d)*(f*target[i,j]-old[i,j]);norm+=delta[i,j]*delta[i,j];}
+   f=System.Math.Min(1,.01/System.Math.Max(System.Math.Sqrt(norm),1e-30));var proposal=new double[6,d];for(int i=0;i<6;i++)for(int j=0;j<d;j++)proposal[i,j]=old[i,j]+f*delta[i,j];
+   double score=De92Fit(proposal,weights,joint);if(score<=before+1e-14){accepted=true;after=score;for(int i=0;i<6;i++){hybrid.De83VB[i]=proposal[i,0];if(joint)for(int j=0;j<10;j++)de92C[i*10+j]=proposal[i,j+1];}}
+  }
+  var record=new De92Record{t=t,tick=de92Tick,samples=count,window=window,forget=forget,before=before,after=after,weightSum=reference,accepted=accepted,matrix=de92C,bias=hybrid.De83VB,center=mu,features=z,innovation=y};
+  System.IO.File.AppendAllText(System.IO.Path.Combine(artifactDirectory,"window_update.jsonl"),UnityEngine.JsonUtility.ToJson(record)+"\n");return accepted;
+ }
+ double[] De92Prediction(double[] z,double[] u,double[,] ja,double[,] jb){
+  if(De92Mode!="joint")return hybrid.De69Step(z,u,ja,jb);
+  var before=new double[60];for(int i=0;i<6;i++)for(int j=0;j<10;j++){int k=i*10+j;before[k]=hybrid.A[7+i,36+j];hybrid.A[7+i,36+j]+=de92C[k];}
+  try{return hybrid.De69Step(z,u,ja,jb);}finally{for(int i=0;i<6;i++)for(int j=0;j<10;j++)hybrid.A[7+i,36+j]=before[i*10+j];}
+ }
+}

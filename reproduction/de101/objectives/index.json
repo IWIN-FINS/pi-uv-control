@@ -1,0 +1,110 @@
+[
+  {
+    "path": "objectives/train281/F/KoopmanMpc-0.json",
+    "init": 281,
+    "arm": "F",
+    "sha256": "262cc51bc899859fd9a1f7d11a60f07ca3e0447711c1e53a070e25f77ac2cbd5"
+  },
+  {
+    "path": "objectives/train281/Knu/KoopmanMpc-0.json",
+    "init": 281,
+    "arm": "Knu",
+    "sha256": "9d6fa0ed8eba86f19fe5b413d104222fbb851df1e95f88c38f82ffb46ff749a4"
+  },
+  {
+    "path": "objectives/train281/Kx/KoopmanMpc-0.json",
+    "init": 281,
+    "arm": "Kx",
+    "sha256": "ed8751c57c644bc751da4ba1a6c003a4134cde777a6834a1306d12f352d69db3"
+  },
+  {
+    "path": "objectives/train281/H/KoopmanMpc-0.json",
+    "init": 281,
+    "arm": "H",
+    "sha256": "045b4e00d14bb8b471679c45158c0c7050101bda670d4c324863bd899d1ac7f0"
+  },
+  {
+    "path": "objectives/train281/H_bias/KoopmanMpc-0.json",
+    "init": 281,
+    "arm": "H_bias",
+    "sha256": "ee12f26db3dc4ee11ecbc2947ceba0e7dbbd7ec14b831b088d920b52e6e1f051"
+  },
+  {
+    "path": "objectives/train281/H_bias/KoopmanMpc-8.json",
+    "init": 281,
+    "arm": "H_bias",
+    "sha256": "28ea753c752f66027654aa84d1758929748ba8bc4cad27b92a027746d3d3c2bb"
+  },
+  {
+    "path": "objectives/train282/F/KoopmanMpc-0.json",
+    "init": 282,
+    "arm": "F",
+    "sha256": "bd863f824e437488a8cdc120d87edd015f17576de950593904dacb9c4cf4f581"
+  },
+  {
+    "path": "objectives/train282/Knu/KoopmanMpc-0.json",
+    "init": 282,
+    "arm": "Knu",
+    "sha256": "91e8403de64d33af16a72e80409d361ca33e825b8caa95d88871345f9d781dc0"
+  },
+  {
+    "path": "objectives/train282/Kx/KoopmanMpc-0.json",
+    "init": 282,
+    "arm": "Kx",
+    "sha256": "1b05207b9aa4200696c928cf671b28ea7969365b48372a947192227366cc4174"
+  },
+  {
+    "path": "objectives/train282/H/KoopmanMpc-0.json",
+    "init": 282,
+    "arm": "H",
+    "sha256": "9382ea06ed8862bb69ef7cf95c05bfbfccc74a0aaf25183925bcb2da86005e42"
+  },
+  {
+    "path": "objectives/train282/H_bias/KoopmanMpc-0.json",
+    "init": 282,
+    "arm": "H_bias",
+    "sha256": "17e3716ac29802ce044d5c5468ddff8c6650c3b3dac4567bef40338b440b1108"
+  },
+  {
+    "path": "objectives/train282/H_bias/KoopmanMpc-8.json",
+    "init": 282,
+    "arm": "H_bias",
+    "sha256": "4a8525b70283493059b09293fcab2f330e5d09bad7e866eb13b1582b81bf284f"
+  },
+  {
+    "path": "objectives/train283/F/KoopmanMpc-0.json",
+    "init": 283,
+    "arm": "F",
+    "sha256": "15d012fc18d03c615b3d6346361e7f55de3cc91541ba71d83ecffd3c9e69de90"
+  },
+  {
+    "path": "objectives/train283/Knu/KoopmanMpc-0.json",
+    "init": 283,
+    "arm": "Knu",
+    "sha256": "be27ad7fd17d88422afa7b87bda189490aa6bd826a9b184abef85aa651b0aa92"
+  },
+  {
+    "path": "objectives/train283/Kx/KoopmanMpc-0.json",
+    "init": 283,
+    "arm": "Kx",
+    "sha256": "01d00ba6824cef5cc8452ac60892bf218df4ca88e0420bd3d3640d76dbc572bf"
+  },
+  {
+    "path": "objectives/train283/H/KoopmanMpc-0.json",
+    "init": 283,
+    "arm": "H",
+    "sha256": "b3923632434a1454dfefb90a1344474bf041f6b0eeacf7216306b0e4880c4ce7"
+  },
+  {
+    "path": "objectives/train283/H_bias/KoopmanMpc-0.json",
+    "init": 283,
+    "arm": "H_bias",
+    "sha256": "02d1e2a728c3dd9bb339a3b42ef3878802c4e85b722114e72f796e35806e2e53"
+  },
+  {
+    "path": "objectives/train283/H_bias/KoopmanMpc-8.json",
+    "init": 283,
+    "arm": "H_bias",
+    "sha256": "42efdb7a2a230d2d29958402b7a86bb7c67d599edd92832a2a1c2b9efdf9ee21"
+  }
+]

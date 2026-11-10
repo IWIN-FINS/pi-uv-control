@@ -1,0 +1,22 @@
+{
+  "check": "numerical_replay_not_closed_loop_test",
+  "full_test_suite": {
+    "passed": 29,
+    "failed": 0
+  },
+  "backend_results": {
+    "numpy": {
+      "intervals": 30,
+      "max_absolute_bias_difference_from_live": 2.5215940446798868e-14,
+      "acceptance_decisions_all_match": true,
+      "accepted_updates": 5
+    },
+    "native": {
+      "intervals": 30,
+      "max_absolute_bias_difference_from_live": 0.0,
+      "acceptance_decisions_all_match": true,
+      "accepted_updates": 5
+    }
+  },
+  "note": "No new closed-loop simulation/hardware run. Existing uv-managed ROS Python environment used for tests; original hardware updater has exact equality with portable optimizer on this replay."
+}

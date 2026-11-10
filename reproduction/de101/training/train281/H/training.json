@@ -1,0 +1,95 @@
+{
+  "seed": 281,
+  "arm": "H",
+  "steps": 1200,
+  "accepted": 1200,
+  "best_step": 1200,
+  "validation8": 0.14381254451213366,
+  "trace": [
+    {
+      "step": 100,
+      "validation8": 0.20817546411679233,
+      "loss": 0.021736355068417323,
+      "accepted": 100,
+      "segment_elapsed_s": 8.219000000000051
+    },
+    {
+      "step": 200,
+      "validation8": 0.19920810978972872,
+      "loss": 0.017727320007878616,
+      "accepted": 200,
+      "segment_elapsed_s": 16.01599999999962
+    },
+    {
+      "step": 300,
+      "validation8": 0.18894769154356802,
+      "loss": 0.01517633686955348,
+      "accepted": 300,
+      "segment_elapsed_s": 23.859999999999673
+    },
+    {
+      "step": 400,
+      "validation8": 0.17798888952593203,
+      "loss": 0.019275274215740493,
+      "accepted": 400,
+      "segment_elapsed_s": 31.64099999999962
+    },
+    {
+      "step": 500,
+      "validation8": 0.168266792364101,
+      "loss": 0.01399686335173657,
+      "accepted": 500,
+      "segment_elapsed_s": 39.46900000000005
+    },
+    {
+      "step": 600,
+      "validation8": 0.16182597196569684,
+      "loss": 0.013843156514195399,
+      "accepted": 600,
+      "segment_elapsed_s": 47.32799999999952
+    },
+    {
+      "step": 700,
+      "validation8": 0.15860173655952997,
+      "loss": 0.015064185490424029,
+      "accepted": 700,
+      "segment_elapsed_s": 55.14099999999962
+    },
+    {
+      "step": 800,
+      "validation8": 0.153652572055735,
+      "loss": 0.01319755843147034,
+      "accepted": 800,
+      "segment_elapsed_s": 62.92199999999957
+    },
+    {
+      "step": 900,
+      "validation8": 0.14867882169071656,
+      "loss": 0.011218414244981937,
+      "accepted": 900,
+      "segment_elapsed_s": 70.73499999999967
+    },
+    {
+      "step": 1000,
+      "validation8": 0.146585169982198,
+      "loss": 0.016417649314900633,
+      "accepted": 1000,
+      "segment_elapsed_s": 78.53099999999995
+    },
+    {
+      "step": 1100,
+      "validation8": 0.14608643033188395,
+      "loss": 0.013907855678825751,
+      "accepted": 1100,
+      "segment_elapsed_s": 86.32799999999952
+    },
+    {
+      "step": 1200,
+      "validation8": 0.14381254451213366,
+      "loss": 0.010486871154993409,
+      "accepted": 1200,
+      "segment_elapsed_s": 94.04699999999957
+    }
+  ],
+  "model_sha256": "dcf939ac0317cac7f048761204cb38427799d2c3caf80563d1e95c4c2b064697"
+}

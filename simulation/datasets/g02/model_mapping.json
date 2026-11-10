@@ -1,0 +1,14 @@
+{
+  "281/Kx": {
+    "path": "D:\\FinsSim-deps\\Unity\\de101-10datasets-400-20261107\\g02\\training\\models\\train281\\Kx\\model.json",
+    "sha256": "2aff9d64d2a96cb93d910fc442c95ef23a27687f677ee0468f1f76e5608f9194"
+  },
+  "281/H": {
+    "path": "D:\\FinsSim-deps\\Unity\\de101-10datasets-400-20261107\\g02\\training\\models\\train281\\H\\model.json",
+    "sha256": "888a3a009b47f43cd8323b3a75430f7ef4d7efca4e082ceeecaa039722867291"
+  },
+  "281/H_bias": {
+    "path": "D:\\FinsSim-deps\\Unity\\de101-10datasets-400-20261107\\g02\\training\\models\\train281\\H\\model.json",
+    "sha256": "888a3a009b47f43cd8323b3a75430f7ef4d7efca4e082ceeecaa039722867291"
+  }
+}

@@ -1,0 +1,198 @@
+{
+  "groups": [
+    {
+      "group": "g01",
+      "training_seeds": [
+        3117001,
+        3117002,
+        3117003
+      ]
+    },
+    {
+      "group": "g02",
+      "training_seeds": [
+        3117004,
+        3117005,
+        3117006
+      ]
+    },
+    {
+      "group": "g03",
+      "training_seeds": [
+        3117007,
+        3117008,
+        3117009
+      ]
+    },
+    {
+      "group": "g04",
+      "training_seeds": [
+        3117010,
+        3117011,
+        3117012
+      ]
+    },
+    {
+      "group": "g05",
+      "training_seeds": [
+        3117013,
+        3117014,
+        3117015
+      ]
+    },
+    {
+      "group": "g06",
+      "training_seeds": [
+        3117016,
+        3117017,
+        3117018
+      ]
+    },
+    {
+      "group": "g07",
+      "training_seeds": [
+        3117019,
+        3117020,
+        3117021
+      ]
+    },
+    {
+      "group": "g08",
+      "training_seeds": [
+        3117022,
+        3117023,
+        3117024
+      ]
+    },
+    {
+      "group": "g09",
+      "training_seeds": [
+        3117025,
+        3117026,
+        3117027
+      ]
+    },
+    {
+      "group": "g10",
+      "training_seeds": [
+        3117028,
+        3117029,
+        3117030
+      ]
+    }
+  ],
+  "training": {
+    "trajectories_per_group": 12,
+    "transitions_per_group": 3060,
+    "validation_common": 1020,
+    "validation_sha256": "0457b3277579f337597ced85769d24bfa248b91da10f6a16ef19213c4eba7131",
+    "initialization": 281,
+    "updates": 1200,
+    "batch": 128,
+    "training_methods": [
+      "Kx",
+      "H"
+    ],
+    "online": "H_bias shares all weights with H. Only causal velocity bias adapts.",
+    "Kx": "fit full velocity and pose increment from scratch using DE101 initialization and training recipe"
+  },
+  "frozen_fossen_baseline": "D:\\code\\Underwater-Adaptive-Dynamics\\reproduction\\de101\\models\\train281\\F\\operator.json",
+  "plant_profile": "D:\\FinsSim-deps\\Unity\\de101-mainline-failure-inclusive-20261027\\formal\\still\\train281\\F\\seed1101221\\invariant-seed1101221\\physical_profile_fixed.json",
+  "nominal": {
+    "mass": [
+      35.03791630268097,
+      42.47066192626953,
+      51.30567789077759,
+      0.13154837489128113,
+      1.102588963508606,
+      0.2318587303161621
+    ],
+    "linearDrag": [
+      71.30930747985839,
+      116.14031829833984,
+      87.61427478790283,
+      0.27,
+      0.4579857267439365,
+      0.27
+    ],
+    "quadraticDrag": [
+      18.0,
+      130.0,
+      24.0,
+      0.0,
+      0.4776321351528168,
+      0.0
+    ],
+    "spring": [
+      0.0,
+      0.0,
+      0.0,
+      13.077181816101074,
+      0.0,
+      13.077181816101074
+    ],
+    "bias": [
+      0.0,
+      0.08437454700469971,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "velocityIntegrator": "rk4_coupled",
+    "velocitySubsteps": 4
+  },
+  "truth_sha256": "306167c70834b6672d05becda2d1309e433adf5e0314eaa3f027e49f7dcd64f6",
+  "rounds": [
+    {
+      "condition": "still",
+      "seed": 3117221
+    },
+    {
+      "condition": "still",
+      "seed": 3117222
+    },
+    {
+      "condition": "steady",
+      "seed": 3117223
+    },
+    {
+      "condition": "steady",
+      "seed": 3117224
+    },
+    {
+      "condition": "slow",
+      "seed": 3117225
+    },
+    {
+      "condition": "slow",
+      "seed": 3117226
+    },
+    {
+      "condition": "fast",
+      "seed": 3117227
+    },
+    {
+      "condition": "fast",
+      "seed": 3117228
+    },
+    {
+      "condition": "nonperiodic",
+      "seed": 3117229
+    },
+    {
+      "condition": "nonperiodic",
+      "seed": 3117230
+    }
+  ],
+  "methods": [
+    "F",
+    "Kx",
+    "H",
+    "H_bias"
+  ],
+  "closed_loop_attempts": 400,
+  "pairing": "Same ten test conditions across datasets. Each four-arm round uses common initial pose, noise draws, flow table and joint8 reference. Rotate controller order by dataset and round.",
+  "forecast": "Common recorded F trajectory from the corresponding round. Only completed past transitions for bias. Fixed origin bias and recorded future inputs for h=1,2,4,8. Score against held-out simulator truth. Keep invalid and missing counts.",
+  "reporting": "All attempts, no performance retries. Full and loaded RMSE missing on incomplete episodes. Known model domain exits retained. Unknown errors stop with logs."
+}

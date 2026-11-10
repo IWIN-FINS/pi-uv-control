@@ -1,0 +1,43 @@
+public sealed partial class FinsRovHybridBasisSmoke {
+ double[] de83Previous;float de83PreviousTime;
+ readonly System.Collections.Generic.List<double[]> de83VErrors=new System.Collections.Generic.List<double[]>();
+ readonly System.Collections.Generic.List<double[]> de83PErrors=new System.Collections.Generic.List<double[]>();
+ string De83Online=>System.Environment.GetEnvironmentVariable("FINSSIM_DE83_ONLINE")??"none";
+ [System.Serializable] public class De83Record {
+  public float t,previousTime;public string mode;public int samples;public bool acceptedV,acceptedP;
+  public double milliseconds,fitVBefore,fitVAfter,fitPBefore,fitPAfter;
+  public double[] previous,input,observed,baseNext,errorV,errorP,velocityBias,poseBias;
+ }
+ void De83Reset(){
+  de83Previous=null;de83VErrors.Clear();de83PErrors.Clear();de82Truth=null;
+  if(GetComponent<De82PhysicsAudit>()==null)gameObject.AddComponent<De82PhysicsAudit>();
+  if(hybrid!=null){System.Array.Clear(hybrid.De83VB,0,6);System.Array.Clear(hybrid.De83PB,0,6);}
+ }
+ static double De83Norm(double[] a){double s=0;foreach(double x in a)s+=x*x;return System.Math.Sqrt(s);}
+ static double De83Fit(System.Collections.Generic.List<double[]> errors,double[] b){double value=0;for(int j=0;j<errors.Count;j++){double w=System.Math.Pow(.98,errors.Count-1-j);for(int i=0;i<6;i++){double e=errors[j][i]-b[i];value+=w*e*e;}}return value;}
+ static bool De83Update(System.Collections.Generic.List<double[]> errors,double[] bias,double gain,double bound,double step,out double before,out double after){
+  before=De83Fit(errors,bias);after=before;if(errors.Count<20)return false;
+  double sum=0;var target=new double[6];for(int j=0;j<errors.Count;j++){double w=System.Math.Pow(.98,errors.Count-1-j);sum+=w;for(int i=0;i<6;i++)target[i]+=w*errors[j][i];}
+  var candidate=new double[6];for(int i=0;i<6;i++){target[i]=(target[i]+.5*bias[i])/(sum+1.5);candidate[i]=bias[i]+gain*(target[i]-bias[i]);}
+  double norm=De83Norm(candidate);if(norm>bound)for(int i=0;i<6;i++)candidate[i]*=bound/norm;
+  var diff=new double[6];for(int i=0;i<6;i++)diff[i]=candidate[i]-bias[i];norm=De83Norm(diff);if(norm>step)for(int i=0;i<6;i++)candidate[i]=bias[i]+diff[i]*step/norm;
+  double fit=De83Fit(errors,candidate);if(fit>before+1e-14)return false;System.Array.Copy(candidate,bias,6);after=fit;return true;
+ }
+ void De83Observe(float t,bool learned){
+  if(!learned)return;var watch=System.Diagnostics.Stopwatch.StartNew();var current=FinsRovHybridOperator.De69Pack(LiftState(stateP,stateV,historyWrench));
+  if(de83Previous==null){de83Previous=current;de83PreviousTime=t;return;}
+  if(System.Math.Abs(t-de83PreviousTime-.1)>.002)throw new System.Exception("DE83 causal interval");
+  var u=new double[6];for(int i=0;i<6;i++)u[i]=historyWrench[i]/WrenchLimit[i];
+  var oldV=hybrid.De83VB;var oldP=hybrid.De83PB;hybrid.De83VB=new double[6];hybrid.De83PB=new double[6];double[] baseline;
+  try{baseline=hybrid.De69Step(de83Previous,u);}finally{hybrid.De83VB=oldV;hybrid.De83PB=oldP;}
+  var ev=new double[6];var ep=new double[6];var bp=FinsRovBodyFrame.Pose(baseline);var cp=FinsRovBodyFrame.Pose(current);var angle=FinsRovHybridOperator.De83RotationError(bp,cp);
+  for(int i=0;i<6;i++){ev[i]=current[7+i]-baseline[7+i];ep[i]=(i<3?cp[i]-bp[i]:angle[i-3])/hybrid.Data.de83PoseBiasScale[i];}
+  de83VErrors.Add(ev);de83PErrors.Add(ep);if(de83VErrors.Count>40){de83VErrors.RemoveAt(0);de83PErrors.RemoveAt(0);}
+  double vb=De83Fit(de83VErrors,oldV),va=vb,pb=De83Fit(de83PErrors,oldP),pa=pb;bool av=false,ap=false;
+  if(De83Online=="velocity" || De83Online=="both")av=De83Update(de83VErrors,hybrid.De83VB,.2,.25,.01,out vb,out va);
+  if(De83Online=="both")ap=De83Update(de83PErrors,hybrid.De83PB,.05,1d,.05,out pb,out pa);
+  watch.Stop();var rec=new De83Record{t=t,previousTime=de83PreviousTime,mode=De83Online,samples=de83VErrors.Count,acceptedV=av,acceptedP=ap,milliseconds=watch.Elapsed.TotalMilliseconds,fitVBefore=vb,fitVAfter=va,fitPBefore=pb,fitPAfter=pa,
+   previous=de83Previous,input=u,observed=current,baseNext=baseline,errorV=ev,errorP=ep,velocityBias=hybrid.De83VB,poseBias=hybrid.De83PB};
+  System.IO.File.AppendAllText(System.IO.Path.Combine(artifactDirectory,"online_adaptation.jsonl"),UnityEngine.JsonUtility.ToJson(rec)+"\n");de83Previous=current;de83PreviousTime=t;
+ }
+}

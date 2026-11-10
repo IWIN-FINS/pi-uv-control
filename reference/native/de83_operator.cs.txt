@@ -1,0 +1,61 @@
+// DE83 shared compact kernel. Physical12+latent10, no extra dynamic state.
+public sealed partial class FinsRovHybridOperator {
+ public double[] De83VB=new double[6],De83PB=new double[6];
+ public static double[,] De83Mul(double[,] a,double[,] b){var c=new double[3,3];for(int i=0;i<3;i++)for(int j=0;j<3;j++)for(int k=0;k<3;k++)c[i,j]+=a[i,k]*b[k,j];return c;}
+ public static double[,] De83Exp(double[] v){
+  double a2=0;foreach(double x in v)a2+=x*x;double a=System.Math.Sqrt(System.Math.Max(a2,1e-12));
+  double s=a2<1e-8?1-a2/6+a2*a2/120:System.Math.Sin(a)/a,c=a2<1e-8?.5-a2/24+a2*a2/720:(1-System.Math.Cos(a))/(a*a);
+  var k=new double[,]{{0,-v[2],v[1]},{v[2],0,-v[0]},{-v[1],v[0],0}};var kk=De83Mul(k,k);var r=new double[3,3];
+  for(int i=0;i<3;i++)for(int j=0;j<3;j++)r[i,j]=(i==j?1d:0d)+s*k[i,j]+c*kk[i,j];return r;
+ }
+ public static double[] De83Log(double[,] r){double co=System.Math.Max(-1,System.Math.Min(1,(r[0,0]+r[1,1]+r[2,2]-1)/2));double t=System.Math.Acos(co),f=t<1e-5?.5+t*t/12:t/(2*System.Math.Max(System.Math.Sin(t),1e-12));return new[]{(r[2,1]-r[1,2])*f,(r[0,2]-r[2,0])*f,(r[1,0]-r[0,1])*f};}
+ public static double[] De83RotationError(double[] p,double[] q){var a=FinsRovBodyFrame.Rotation(p);var b=FinsRovBodyFrame.Rotation(q);var r=new double[3,3];for(int i=0;i<3;i++)for(int j=0;j<3;j++)for(int k=0;k<3;k++)r[i,j]+=a[k,i]*b[k,j];return De83Log(r);}
+ static double[] De83Euler(double[,] r)=>new[]{System.Math.Asin(System.Math.Max(-1,System.Math.Min(1,-r[1,2]))),System.Math.Atan2(r[0,2],r[2,2]),System.Math.Atan2(r[1,0],r[1,1])};
+ double[] De83Pose(double[] p,double[] pf,double[] correction){
+  var result=(double[])pf.Clone();var r0=FinsRovBodyFrame.Rotation(p);var r1=FinsRovBodyFrame.Rotation(pf);
+  for(int i=0;i<3;i++){for(int j=0;j<3;j++)result[i]-=(r1[i,j]-r0[i,j])*Data.de83Center[j];result[i]+=correction[i]+Data.de83PoseBiasScale[i]*De83PB[i];}
+  var rv=new double[3];var rb=new double[3];for(int i=0;i<3;i++){rv[i]=correction[3+i];rb[i]=Data.de83PoseBiasScale[3+i]*De83PB[3+i];}
+  var angles=De83Euler(De83Mul(De83Mul(r1,De83Exp(rv)),De83Exp(rb)));for(int i=0;i<3;i++)result[3+i]=angles[i];return result;
+ }
+ public double[] De83Step(double[] z,double[] u,double[,] ja=null,double[,] jb=null){
+  const int d=10,n=23;var result=new double[n];result[0]=1;bool dual=Data.de83Mode=="B";
+  var na=ja==null?null:new double[n,n];var nb=ja==null?null:new double[n,6];var physical=UnifiedFossen.Step(z,u,na,nb);
+  for(int i=0;i<d;i++){for(int j=0;j<d;j++)result[13+i]+=A[36+i,36+j]*z[13+j];for(int j=0;j<6;j++)result[13+i]+=B[36+i,j]*u[j];}
+  for(int i=0;i<6;i++){result[7+i]=physical[7+i]+De83VB[i]*z[0];for(int j=0;j<d;j++)result[7+i]+=A[7+i,36+j]*z[13+j];for(int j=0;j<6;j++)result[7+i]+=B[7+i,j]*u[j];}
+  if(ja!=null){
+   System.Array.Clear(ja,0,ja.Length);System.Array.Clear(jb,0,jb.Length);ja[0,0]=1;
+   for(int i=0;i<d;i++){for(int j=0;j<d;j++)ja[13+i,13+j]=A[36+i,36+j];for(int j=0;j<6;j++)jb[13+i,j]=B[36+i,j];}
+   for(int i=0;i<6;i++){for(int j=0;j<13;j++)ja[7+i,j]=na[7+i,j];ja[7+i,0]+=De83VB[i];for(int j=0;j<d;j++)ja[7+i,13+j]=A[7+i,36+j];for(int j=0;j<6;j++)jb[7+i,j]=nb[7+i,j]+B[7+i,j];}
+  }
+  var ps=FinsRovLiftedOperator.PoseScale;var vs=FinsRovLiftedOperator.VelocityScale;var p=FinsRovBodyFrame.Pose(z);var v0=new double[6];var v1=new double[6];
+  for(int i=0;i<6;i++){v0[i]=z[7+i]*vs[i];v1[i]=(Data.de83Mode=="A"?result[7+i]:physical[7+i])*vs[i];}
+  var pf=FinsRovBodyFrame.StartPoseAverage(p,v0,v1,.1);var corr=new double[6];
+  if(dual)for(int i=0;i<6;i++){for(int j=0;j<d;j++)corr[i]+=A[1+i,36+j]*z[13+j];for(int j=0;j<6;j++)corr[i]+=B[1+i,j]*u[j];corr[i]*=ps[i];}
+  var pose=De83Pose(p,pf,corr);for(int i=0;i<6;i++)result[1+i]=(pose[i]-FinsRovLiftedOperator.PoseCenter[i])/ps[i];
+  if(ja==null)return result;
+  double[,] jp,j0,j1;FinsRovBodyFrame.StartPoseAverageJacobians(p,v0,v1,.1,out jp,out j0,out j1);
+  var pa=new double[6,n];var pb=new double[6,6];var va=Data.de83Mode=="A"?ja:na;var vb=Data.de83Mode=="A"?jb:nb;
+  for(int i=0;i<6;i++){
+   for(int j=0;j<n;j++){double val=j>=1&&j<7?jp[i,j-1]*ps[j-1]:j>=7&&j<13?j0[i,j-7]*vs[j-7]:0;for(int l=0;l<6;l++)val+=j1[i,l]*vs[l]*va[7+l,j];pa[i,j]=val;}
+   for(int j=0;j<6;j++)for(int l=0;l<6;l++)pb[i,j]+=j1[i,l]*vs[l]*vb[7+l,j];
+  }
+  // Only tiny geometry partials use central differences; expensive Fossen
+  // derivatives are the existing analytic RK4 sensitivities, evaluated once.
+  var jo=new double[6,6];var jf=new double[6,6];var jc=new double[6,6];for(int i=0;i<3;i++){jf[i,i]=1;jc[i,i]=1;}
+  const double eps=1e-6;
+  for(int block=0;block<3;block++)for(int k=3;k<6;k++){
+   var target=block==0?p:block==1?pf:corr;double old=target[k];target[k]=old+eps;var plus=De83Pose(p,pf,corr);target[k]=old-eps;var minus=De83Pose(p,pf,corr);target[k]=old;
+   var dest=block==0?jo:block==1?jf:jc;for(int i=0;i<6;i++){double diff=plus[i]-minus[i];if(i>=3)diff=System.Math.Atan2(System.Math.Sin(diff),System.Math.Cos(diff));dest[i,k]=diff/(2*eps);}
+  }
+  for(int i=0;i<6;i++){
+   for(int j=0;j<n;j++){double val=0;for(int l=0;l<6;l++){val+=jf[i,l]*pa[l,j];if(j==1+l)val+=jo[i,l]*ps[l];if(dual && j>=13)val+=jc[i,l]*ps[l]*A[1+l,36+j-13];}ja[1+i,j]=val/ps[i];}
+   for(int j=0;j<6;j++){double val=0;for(int l=0;l<6;l++){val+=jf[i,l]*pb[l,j];if(dual)val+=jc[i,l]*ps[l]*B[1+l,j];}jb[1+i,j]=val/ps[i];}
+  }
+  return result;
+ }
+ public double[] De83Padded(double[] z,double[] u,double[,] ja,double[,] jb){
+  var ca=ja==null?null:new double[23,23];var cb=ja==null?null:new double[23,6];var q=De83Step(De69Pack(z),u,ca,cb);var result=new double[46];System.Array.Copy(q,0,result,0,13);System.Array.Copy(q,13,result,36,10);
+  if(ja!=null){System.Array.Clear(ja,0,ja.Length);System.Array.Clear(jb,0,jb.Length);for(int i=0;i<23;i++){int oi=i<13?i:i+23;for(int j=0;j<23;j++)ja[oi,j<13?j:j+23]=ca[i,j];for(int j=0;j<6;j++)jb[oi,j]=cb[i,j];}}
+  return result;
+ }
+}
