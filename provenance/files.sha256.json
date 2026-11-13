@@ -1,6 +1,6 @@
 {
   ".gitattributes": "d60f352d0db1404c70afb4bb8b2ca3fd1c610572aa40720e8a0b7baa7885418c",
-  ".gitignore": "d3eb134f47cacc5baa998d7fc5713f4ca5e7228b41e3cbf78eed853210fc43ad",
+  ".gitignore": "e5871b093d8ce33b198ad46aa8c33903e80f14e8277ffcdcff571eaf0bd327a9",
   "LICENSE": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
   "NOTICE": "54403761135af3467dec1e4e2a92a99a706c02764ca7c8c30fd0e7155fa837d5",
   "README.md": "484c40878b940a65b0cde59b6e11b35453c6f8df4e6917bc73606c88cf39706d",
@@ -19,9 +19,6 @@
   "docs/validation.md": "611b7c005d3c151a81535069d1cc652acef588b7623d7487f7c3971ca146d72b",
   "provenance/source_manifest.json": "2c2d6a6d2ed10502c5d188f503e5b1d0b4a2ee2c61d9747a5f3fe22879f0789b",
   "pyproject.toml": "28e83cc19f5559909e6b5f46db0262b882544045fe05f060e72e2805864fa178",
-  "runs/hardware_replay.json": "d70f7d68f4f611b0b81d31dd55e450bf5b4a9a330d46927198149e0b4e1d99df",
-  "runs/path-check.json": "0c37b124c3db55912715669d094aa4d73658867a3288262853d530a7a9dbb979",
-  "runs/relocated plan with spaces/execution_plan.json": "c8eee875e065f74bde6b85e186f59e091a609baa290e547b171a7f851e24d2e9",
   "src/finshybrid/__init__.py": "dddb8f937e9e84771e6f545dd934bb7dd76cf48c80b8aba2839d7443959ee707",
   "src/finshybrid/bias.py": "b902abc8f1fb015025c68a35b9e503e171ea69f7d0546ba99f4f0fc489658dbb",
   "src/finshybrid/config/reference_metadata.json": "96947303cec9b2697690c17a7bce7fbe65b312bf42b9c642bb94a974fdf772aa",

@@ -20,3 +20,4 @@ outputs/
 *.csv
 *.log
 .env
+runs/
