@@ -1,6 +1,6 @@
 """Multi-step depth-increment-constrained six-velocity bias adaptation.
 
-Derived from the 2026-11-08 FinsSim hardware updater; see provenance/multistep_bias.json.
+Derived from the 2026-11-08 FinsSim hardware updater; see provenance/source_manifest.json.
 Only bias changes. Fossen parameters and the G1 encoder/operators remain frozen.
 """
 from __future__ import annotations

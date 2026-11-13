@@ -2,13 +2,15 @@
 The B branch remains only inside the inherited source; the public training CLI uses A.
 """
 import json
+import os
 from pathlib import Path
 import numpy as np
 import torch
 from .scales import PC,PS,VS,US,DT,H,BASIC,CENTER
 from .encoder import columns, dimension
 def nominal():
-    return json.loads((Path(__file__).parent/'assets/train281/operator.json').read_text())['nominal']
+    path = Path(os.environ.get('FINSHYBRID_TEMPLATE', str(Path(__file__).parent/'config/reference_metadata.json')))
+    return json.loads(path.read_text(encoding='utf-8-sig'))['nominal']
 class BasePredictor(torch.nn.Module):
     def __init__(self, arm, encoder, weights, k, device='cpu'):
         super().__init__(); self.arm=arm; self.device=device

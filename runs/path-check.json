@@ -1,0 +1,104 @@
+{
+  "status": "passed",
+  "models": 15,
+  "max_encoder_error": 2.3314683517128287e-15,
+  "max_step_error": 8.881784197001252e-16,
+  "shared_H_Hbias": [
+    281,
+    282,
+    283
+  ],
+  "canonical_jobs": 75,
+  "full_objectives": [
+    {
+      "path": "objectives/train281/F/KoopmanMpc-0.json",
+      "cost_error": 6.396200172154907e-16,
+      "gradient_error": 1.3823107365521865e-09
+    },
+    {
+      "path": "objectives/train281/Knu/KoopmanMpc-0.json",
+      "cost_error": 3.4247724734500633e-16,
+      "gradient_error": 5.697261440396062e-09
+    },
+    {
+      "path": "objectives/train281/Kx/KoopmanMpc-0.json",
+      "cost_error": 9.568591455868528e-16,
+      "gradient_error": 3.2467758651536165e-09
+    },
+    {
+      "path": "objectives/train281/H/KoopmanMpc-0.json",
+      "cost_error": 9.885074314100435e-16,
+      "gradient_error": 6.984108240827151e-09
+    },
+    {
+      "path": "objectives/train281/H_bias/KoopmanMpc-0.json",
+      "cost_error": 9.885074314100435e-16,
+      "gradient_error": 6.984108240827151e-09
+    },
+    {
+      "path": "objectives/train281/H_bias/KoopmanMpc-8.json",
+      "cost_error": 1.9668327202508942e-16,
+      "gradient_error": 7.594274653577315e-10
+    },
+    {
+      "path": "objectives/train282/F/KoopmanMpc-0.json",
+      "cost_error": 6.396200172154907e-16,
+      "gradient_error": 1.3823107365521865e-09
+    },
+    {
+      "path": "objectives/train282/Knu/KoopmanMpc-0.json",
+      "cost_error": 2.129010097769503e-16,
+      "gradient_error": 6.508580854878595e-09
+    },
+    {
+      "path": "objectives/train282/Kx/KoopmanMpc-0.json",
+      "cost_error": 1.3066727444597574e-15,
+      "gradient_error": 5.565898749220727e-09
+    },
+    {
+      "path": "objectives/train282/H/KoopmanMpc-0.json",
+      "cost_error": 1.3936260335248314e-16,
+      "gradient_error": 3.8177517756808976e-09
+    },
+    {
+      "path": "objectives/train282/H_bias/KoopmanMpc-0.json",
+      "cost_error": 1.3936260335248314e-16,
+      "gradient_error": 3.8177517756808976e-09
+    },
+    {
+      "path": "objectives/train282/H_bias/KoopmanMpc-8.json",
+      "cost_error": 1.4687577619934397e-16,
+      "gradient_error": 2.2767218110786303e-09
+    },
+    {
+      "path": "objectives/train283/F/KoopmanMpc-0.json",
+      "cost_error": 6.396200172154907e-16,
+      "gradient_error": 1.3823107365521865e-09
+    },
+    {
+      "path": "objectives/train283/Knu/KoopmanMpc-0.json",
+      "cost_error": 1.8413836242078448e-16,
+      "gradient_error": 8.911665683175585e-09
+    },
+    {
+      "path": "objectives/train283/Kx/KoopmanMpc-0.json",
+      "cost_error": 1.3794611392679682e-15,
+      "gradient_error": 4.475387006413996e-09
+    },
+    {
+      "path": "objectives/train283/H/KoopmanMpc-0.json",
+      "cost_error": 2.835997697744121e-16,
+      "gradient_error": 5.030693304356039e-09
+    },
+    {
+      "path": "objectives/train283/H_bias/KoopmanMpc-0.json",
+      "cost_error": 2.835997697744121e-16,
+      "gradient_error": 5.030693304356039e-09
+    },
+    {
+      "path": "objectives/train283/H_bias/KoopmanMpc-8.json",
+      "cost_error": 3.33846074167725e-16,
+      "gradient_error": 1.6537872161598826e-09
+    }
+  ]
+}

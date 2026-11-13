@@ -1,6 +1,7 @@
 """Portable API around the frozen G1/A model. All external states use SI units."""
 from pathlib import Path
 import json
+import os
 import numpy as np
 from . import encoder
 from . import physics
@@ -16,7 +17,10 @@ class Model:
     """
 
     def __init__(self, path=None, seed=281):
-        path = Path(path) if path else Path(__file__).parent / f"assets/train{seed}/operator.json"
+        path = path or os.environ.get("FINSHYBRID_MODEL")
+        if not path:
+            raise ValueError("Supply a model path or set FINSHYBRID_MODEL; weights are distributed separately")
+        path = Path(path)
         self.raw = json.loads(path.read_text(encoding="utf-8-sig"))
         if self.raw.get('experiment') == 'DE101' and type(self) is Model:
             raise ValueError('DE101 checkpoints require finshybrid.de101.DE101Model; do not use the DE83 loader')

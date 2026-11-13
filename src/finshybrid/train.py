@@ -1,5 +1,6 @@
 """Portable G1/A training entry; never starts simulation or rewrites supplied models."""
 import argparse
+import os
 import hashlib
 import json
 from pathlib import Path
@@ -76,7 +77,7 @@ class EagerTrainer(GraphTrainer):
 
 
 def export(path, meta, weights, k):
-    raw = Model().raw
+    raw = json.loads(Path(os.environ['FINSHYBRID_TEMPLATE']).read_text(encoding='utf-8-sig'))
     a, b = materialize(k[:16], 'G1')
     raw.update(experiment='portable_G1_A_training', a=a.ravel().tolist(), b=b.ravel().tolist(),
                **{name: value.tolist() for name, value in meta.items()})
@@ -87,6 +88,7 @@ def export(path, meta, weights, k):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--template', type=Path, required=True, help='Operator metadata and nominal physics JSON')
     parser.add_argument('--train', type=Path, required=True)
     parser.add_argument('--validation', type=Path, required=True)
     parser.add_argument('--output', type=Path, required=True)
@@ -95,6 +97,7 @@ def main():
     parser.add_argument('--device', choices=('cpu','cuda'), default='cpu')
     parser.add_argument('--cuda-graph', action='store_true')
     args = parser.parse_args()
+    os.environ['FINSHYBRID_TEMPLATE'] = str(args.template.resolve())
     if args.steps < 1 or (args.cuda_graph and args.device != 'cuda'):
         parser.error('steps must be positive; --cuda-graph requires --device cuda')
     if args.output.exists():

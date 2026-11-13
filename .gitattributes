@@ -1,2 +1,1 @@
-# Preserve byte-exact model fixtures, source snapshots and manifests across platforms.
-* -text
+* text=auto eol=lf

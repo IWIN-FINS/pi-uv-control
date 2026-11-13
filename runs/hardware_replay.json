@@ -1,0 +1,611 @@
+{
+  "kind": "completed_hardware_interval_replay",
+  "backend": "numpy",
+  "depth_weight": 0.25,
+  "intervals": 30,
+  "accepted": 5,
+  "rejected": 6,
+  "final_bias": [
+    0.003641738989957628,
+    0.0037073579925412515,
+    -0.0011249446641860414,
+    0.04566155916848237,
+    -0.0050388559459641265,
+    0.01582807677719676
+  ],
+  "reports": [
+    {
+      "accepted": false,
+      "tick": 1,
+      "samples": 1,
+      "end_ns": 1794144452400000000,
+      "available_ns": 1794144452424587621,
+      "before": null,
+      "after": null,
+      "reason": "warmup",
+      "bias": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "accepted": false,
+      "tick": 2,
+      "samples": 2,
+      "end_ns": 1794144452500000000,
+      "available_ns": 1794144452523234141,
+      "before": null,
+      "after": null,
+      "reason": "warmup",
+      "bias": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "accepted": false,
+      "tick": 3,
+      "samples": 3,
+      "end_ns": 1794144452600000000,
+      "available_ns": 1794144452624589376,
+      "before": null,
+      "after": null,
+      "reason": "warmup",
+      "bias": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "accepted": false,
+      "tick": 4,
+      "samples": 4,
+      "end_ns": 1794144452700000000,
+      "available_ns": 1794144452721769069,
+      "before": null,
+      "after": null,
+      "reason": "warmup",
+      "bias": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "accepted": false,
+      "tick": 5,
+      "samples": 5,
+      "end_ns": 1794144452800000000,
+      "available_ns": 1794144452821009397,
+      "before": null,
+      "after": null,
+      "reason": "warmup",
+      "bias": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "accepted": false,
+      "tick": 6,
+      "samples": 6,
+      "end_ns": 1794144452900000000,
+      "available_ns": 1794144452925542618,
+      "before": null,
+      "after": null,
+      "reason": "warmup",
+      "bias": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "accepted": false,
+      "tick": 7,
+      "samples": 7,
+      "end_ns": 1794144453000000000,
+      "available_ns": 1794144453021272764,
+      "before": null,
+      "after": null,
+      "reason": "warmup",
+      "bias": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "accepted": false,
+      "tick": 8,
+      "samples": 8,
+      "end_ns": 1794144453100000000,
+      "available_ns": 1794144453123518854,
+      "before": null,
+      "after": null,
+      "reason": "warmup",
+      "bias": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "accepted": false,
+      "tick": 9,
+      "samples": 9,
+      "end_ns": 1794144453200000000,
+      "available_ns": 1794144453221415965,
+      "before": null,
+      "after": null,
+      "reason": "warmup",
+      "bias": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "accepted": false,
+      "tick": 10,
+      "samples": 10,
+      "end_ns": 1794144453300000000,
+      "available_ns": 1794144453324287737,
+      "before": null,
+      "after": null,
+      "reason": "warmup",
+      "bias": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "accepted": false,
+      "tick": 11,
+      "samples": 11,
+      "end_ns": 1794144453400000000,
+      "available_ns": 1794144453422069778,
+      "before": null,
+      "after": null,
+      "reason": "warmup",
+      "bias": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "accepted": false,
+      "tick": 12,
+      "samples": 12,
+      "end_ns": 1794144453500000000,
+      "available_ns": 1794144453524658639,
+      "before": null,
+      "after": null,
+      "reason": "warmup",
+      "bias": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "accepted": false,
+      "tick": 13,
+      "samples": 13,
+      "end_ns": 1794144453600000000,
+      "available_ns": 1794144453625038908,
+      "before": null,
+      "after": null,
+      "reason": "warmup",
+      "bias": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "accepted": false,
+      "tick": 14,
+      "samples": 14,
+      "end_ns": 1794144453700000000,
+      "available_ns": 1794144453722052140,
+      "before": null,
+      "after": null,
+      "reason": "warmup",
+      "bias": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "accepted": false,
+      "tick": 15,
+      "samples": 15,
+      "end_ns": 1794144453800000000,
+      "available_ns": 1794144453824927259,
+      "before": null,
+      "after": null,
+      "reason": "warmup",
+      "bias": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "accepted": false,
+      "tick": 16,
+      "samples": 16,
+      "end_ns": 1794144453900000000,
+      "available_ns": 1794144453930029895,
+      "before": null,
+      "after": null,
+      "reason": "warmup",
+      "bias": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "accepted": false,
+      "tick": 17,
+      "samples": 17,
+      "end_ns": 1794144454000000000,
+      "available_ns": 1794144454024794187,
+      "before": null,
+      "after": null,
+      "reason": "warmup",
+      "bias": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "accepted": false,
+      "tick": 18,
+      "samples": 18,
+      "end_ns": 1794144454100000000,
+      "available_ns": 1794144454125026206,
+      "before": null,
+      "after": null,
+      "reason": "warmup",
+      "bias": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "accepted": false,
+      "tick": 19,
+      "samples": 19,
+      "end_ns": 1794144454200000000,
+      "available_ns": 1794144454222299745,
+      "before": null,
+      "after": null,
+      "reason": "warmup",
+      "bias": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "accepted": false,
+      "tick": 20,
+      "samples": 20,
+      "end_ns": 1794144454300000000,
+      "available_ns": 1794144454327538866,
+      "before": 1.6058619578382924,
+      "after": 1.6058619578382924,
+      "reason": "loss_or_guard_rejected",
+      "depth_before": 0.03893296366706163,
+      "velocity_before": 1.42241414873154,
+      "tilt_before": 0.463939006295065,
+      "bias": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "accepted": false,
+      "tick": 21,
+      "samples": 21,
+      "end_ns": 1794144454400000000,
+      "available_ns": 1794144454424434647,
+      "before": 3.8716785883085967,
+      "after": 3.8716785883085967,
+      "reason": "loss_or_guard_rejected",
+      "depth_before": 0.05797758371133259,
+      "velocity_before": 3.69757267613147,
+      "tilt_before": 0.5000420154363964,
+      "bias": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "accepted": true,
+      "tick": 22,
+      "samples": 22,
+      "end_ns": 1794144454500000000,
+      "available_ns": 1794144454523245989,
+      "before": 3.760044837900696,
+      "after": 3.7180418709369123,
+      "reason": "accepted",
+      "depth_before": 0.1529722517187668,
+      "velocity_before": 3.5851191582200435,
+      "tilt_before": 0.2989450742711164,
+      "depth_after": 0.15155376599345152,
+      "velocity_after": 3.54703433693926,
+      "tilt_after": 0.2823261004403359,
+      "step_fraction": 1.0,
+      "bias": [
+        0.00024260797387542308,
+        0.00031684837351187757,
+        -0.0004630963612782611,
+        0.009864213558403575,
+        -0.0003007877566567482,
+        0.001494358671483607
+      ]
+    },
+    {
+      "accepted": true,
+      "tick": 23,
+      "samples": 23,
+      "end_ns": 1794144454600000000,
+      "available_ns": 1794144454625417304,
+      "before": 1.1347028104246972,
+      "after": 1.1164153200103997,
+      "reason": "accepted",
+      "depth_before": 0.1530609108413065,
+      "velocity_before": 0.9524084508751485,
+      "tilt_before": 0.18199060842987702,
+      "depth_after": 0.14813977196611636,
+      "velocity_after": 0.942915948063766,
+      "tilt_after": 0.16674332815821252,
+      "step_fraction": 1.0,
+      "bias": [
+        0.0012307109106710096,
+        0.0016596608048882822,
+        -5.609087793192411e-05,
+        0.018196092386901362,
+        -0.0027617958132100133,
+        0.006139580779173752
+      ]
+    },
+    {
+      "accepted": false,
+      "tick": 24,
+      "samples": 24,
+      "end_ns": 1794144454700000000,
+      "available_ns": 1794144454725746549,
+      "before": 1.3620672588076341,
+      "after": 1.3620672588076341,
+      "reason": "loss_or_guard_rejected",
+      "depth_before": 0.045368647216841314,
+      "velocity_before": 1.1794935592759126,
+      "tilt_before": 0.4543019505480489,
+      "bias": [
+        0.0012307109106710096,
+        0.0016596608048882822,
+        -5.609087793192411e-05,
+        0.018196092386901362,
+        -0.0027617958132100133,
+        0.006139580779173752
+      ]
+    },
+    {
+      "accepted": false,
+      "tick": 25,
+      "samples": 25,
+      "end_ns": 1794144454800000000,
+      "available_ns": 1794144454823187906,
+      "before": 3.6637834302781744,
+      "after": 3.6637834302781744,
+      "reason": "loss_or_guard_rejected",
+      "depth_before": 0.05897847137835744,
+      "velocity_before": 3.4399836362618155,
+      "tilt_before": 0.484375008072543,
+      "bias": [
+        0.0012307109106710096,
+        0.0016596608048882822,
+        -5.609087793192411e-05,
+        0.018196092386901362,
+        -0.0027617958132100133,
+        0.006139580779173752
+      ]
+    },
+    {
+      "accepted": true,
+      "tick": 26,
+      "samples": 26,
+      "end_ns": 1794144454900000000,
+      "available_ns": 1794144454923176080,
+      "before": 3.4966587705877243,
+      "after": 3.458536603277222,
+      "reason": "accepted",
+      "depth_before": 0.1665997550138701,
+      "velocity_before": 3.337532568944674,
+      "tilt_before": 0.2929308593565668,
+      "depth_after": 0.1643268042313314,
+      "velocity_after": 3.3034824958933666,
+      "tilt_after": 0.2761763478159531,
+      "step_fraction": 1.0,
+      "bias": [
+        0.0016718336706224143,
+        0.0021718773547164012,
+        -0.00054974762865292,
+        0.027973888058897365,
+        -0.0030423479953487695,
+        0.008040988205002327
+      ]
+    },
+    {
+      "accepted": true,
+      "tick": 27,
+      "samples": 27,
+      "end_ns": 1794144455000000000,
+      "available_ns": 1794144455022914462,
+      "before": 1.5077771315760584,
+      "after": 1.4869151426564648,
+      "reason": "accepted",
+      "depth_before": 0.14007697286356258,
+      "velocity_before": 1.3020234463584002,
+      "tilt_before": 0.18218662091688048,
+      "depth_after": 0.13522405905274704,
+      "velocity_after": 1.289893212147248,
+      "tilt_after": 0.1666435420152701,
+      "step_fraction": 1.0,
+      "bias": [
+        0.0030864657933696964,
+        0.0034528017922848455,
+        -0.0005808395940220082,
+        0.03605627298672742,
+        -0.005205516425648174,
+        0.013174489744182236
+      ]
+    },
+    {
+      "accepted": false,
+      "tick": 28,
+      "samples": 28,
+      "end_ns": 1794144455100000000,
+      "available_ns": 1794144455123417771,
+      "before": 1.5687776621543732,
+      "after": 1.5687776621543732,
+      "reason": "loss_or_guard_rejected",
+      "depth_before": 0.03757423967809667,
+      "velocity_before": 1.4046711332391646,
+      "tilt_before": 0.4032156330234862,
+      "bias": [
+        0.0030864657933696964,
+        0.0034528017922848455,
+        -0.0005808395940220082,
+        0.03605627298672742,
+        -0.005205516425648174,
+        0.013174489744182236
+      ]
+    },
+    {
+      "accepted": false,
+      "tick": 29,
+      "samples": 29,
+      "end_ns": 1794144455200000000,
+      "available_ns": 1794144455224605984,
+      "before": 3.196058215951169,
+      "after": 3.196058215951169,
+      "reason": "loss_or_guard_rejected",
+      "depth_before": 0.04879363156573855,
+      "velocity_before": 2.9578578875715578,
+      "tilt_before": 0.4519887674456962,
+      "bias": [
+        0.0030864657933696964,
+        0.0034528017922848455,
+        -0.0005808395940220082,
+        0.03605627298672742,
+        -0.005205516425648174,
+        0.013174489744182236
+      ]
+    },
+    {
+      "accepted": true,
+      "tick": 30,
+      "samples": 30,
+      "end_ns": 1794144455300000000,
+      "available_ns": 1794144455324861745,
+      "before": 3.1923383963199257,
+      "after": 3.1590109245468576,
+      "reason": "accepted",
+      "depth_before": 0.1360811636708191,
+      "velocity_before": 3.0142696536319993,
+      "tilt_before": 0.314788434087122,
+      "depth_after": 0.1351791405351269,
+      "velocity_after": 2.9843769209724473,
+      "tilt_after": 0.2976176907914778,
+      "step_fraction": 1.0,
+      "bias": [
+        0.003641738989957628,
+        0.0037073579925412515,
+        -0.0011249446641860414,
+        0.04566155916848237,
+        -0.0050388559459641265,
+        0.01582807677719676
+      ]
+    }
+  ]
+}

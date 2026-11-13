@@ -1,13 +1,24 @@
-# Predictor and online adaptation
+# Main method
 
-Fossen dynamics advance body velocity. A neural encoder maps measured depth, attitude and body velocity into ten learned features. Fixed A/B matrices advance the learned state; C/D matrices read out six velocity corrections. Corrected velocity enters pose integration in the same step, including center-of-mass/body-origin geometry.
+The predictor combines a frozen nominal Fossen velocity step with a learned residual. An encoder initializes a latent state once at the start of a prediction window. Latent dynamics then propagate linearly:
 
-Model() defaults to historical DE83 package assets. Use DE101Model for simulation native exports and Model(path) for the hardware operator. Checkpoints include nominal physics and normalization statistics.
+\[
+z_{j+1}=Az_j+Bu_j,\qquad
+\hat\nu_{j+1}=F_\nu(\hat x_j,u_j)+S_\nu(Cz_j+Du_j+b_k).
+\]
 
-MultiStepBiasUpdater fits completed historical windows with velocity, depth-increment and attitude residuals. The bias is constant throughout each candidate rollout. The target depth increments come from measured completed transitions. Magnitude/change penalties, norm limits, backtracking and acceptance guards constrain updates.
+The G1 encoder uses 10 input features, fully connected layers of widths 32, 16 and 10, ReLU activations, a scaled input skip connection and layer normalization. The skip connection inside the encoder is distinct from adding the learned velocity residual to nominal physics.
 
-The configured history is 40 completed intervals, warmup 20, at most eight windows, eight steps, supervision at steps 1/5/8 and forgetting 0.98. Velocity/depth/attitude weights are 1/0.25/0.2. See hardware/config.json and implementation docstrings for exact scales and guards.
+Pose is propagated using the geometry kernels and the body-origin / center-of-mass offset. State and wrench normalization are defined in `scales.py`. The exported 46-element vector is a legacy storage layout, not 46 learned latent states.
 
-## Metrics
+## Online update
 
-Tracking RMSE compares actual position with reference during closed-loop operation. Prediction RMSE compares a model rollout with future recorded state on a common Fossen-controlled trajectory, using recorded future inputs for offline conditional prediction. Bias uses only prior completed intervals. Horizontal errors use squared Euclidean distance in world XZ. Keep failures and invalid counts in reported denominators.
+`MultiStepBiasUpdater` adjusts six normalized velocity-bias components from completed historical intervals. It evaluates candidate biases through multi-step rollouts, using velocity, depth-increment and regularization terms. A candidate remains fixed throughout each prediction window. The physical parameters, encoder and Koopman matrices remain frozen.
+
+The implementation retains a bounded history and supervises selected rollout horizons. Read the constructor defaults and deployment configuration together: changing the update history, weights or interval timing defines a different experiment. The hardware wrapper reconstructs interval-mean wrench from final motor output, thrust calibration and thruster geometry.
+
+No future measured state or uncompleted motor interval may enter an update. An offline forecast may replay recorded future inputs only as conditional prediction inputs; that does not authorize using future observations in online adaptation.
+
+## Implementations
+
+`predictor.py` implements the portable G1/A export contract. `de101.py` supplies an explicit historical export adapter. `mpc.py` contains the objective and a SciPy reference solve. The reference solve is a diagnostic implementation and is not a claim of timing equivalence to a native simulator solver. `deployment/hardware` contains the hardware plant and controller runtime used for integration.
